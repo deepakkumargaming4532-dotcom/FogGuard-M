@@ -1,0 +1,141 @@
+// FogGuard-M Simulated Data
+// All telemetry is simulated for demonstration at the NIT Jamshedpur Robotics Competition.
+// Clearly labeled as SIMULATED DATA.
+
+import { Dumper, WeatherData } from '../types';
+
+export const INITIAL_DUMPERS: Dumper[] = [
+  {
+    id: 'D01',
+    name: 'Dumper D01',
+    x: 28,
+    y: 34,
+    heading: 45,
+    speed: 22,
+    loadStatus: 'FULL',
+    payloadTons: 94.5,
+    maxCapacityTons: 100,
+    status: 'ACTIVE',
+    operator: 'R. Sharma (Demo)',
+    fuelPercent: 78,
+    batteryPercent: 92,
+    assignedZone: 'Haul Ramp North',
+    ultrasonicFrontDistance: 38.4,
+    ultrasonicRearDistance: 45.0,
+  },
+  {
+    id: 'D02',
+    name: 'Dumper D02',
+    x: 32,
+    y: 39,
+    heading: 220,
+    speed: 18,
+    loadStatus: 'EMPTY',
+    payloadTons: 0,
+    maxCapacityTons: 100,
+    status: 'WARNING', // Close to D01 to demonstrate proximity warning
+    operator: 'A. Verma (Demo)',
+    fuelPercent: 64,
+    batteryPercent: 88,
+    assignedZone: 'Haul Ramp North',
+    ultrasonicFrontDistance: 19.2, // Proximity warning threshold trigger!
+    ultrasonicRearDistance: 50.0,
+  },
+  {
+    id: 'D03',
+    name: 'Dumper D03',
+    x: 65,
+    y: 22,
+    heading: 90,
+    speed: 26,
+    loadStatus: 'FULL',
+    payloadTons: 98.2,
+    maxCapacityTons: 100,
+    status: 'ACTIVE',
+    operator: 'M. Kisku (Demo)',
+    fuelPercent: 82,
+    batteryPercent: 95,
+    assignedZone: 'Primary Crusher Hopper',
+    ultrasonicFrontDistance: 55.0,
+    ultrasonicRearDistance: 48.0,
+  },
+  {
+    id: 'D04',
+    name: 'Dumper D04',
+    x: 74,
+    y: 68,
+    heading: 135,
+    speed: 14,
+    loadStatus: 'EMPTY',
+    payloadTons: 0,
+    maxCapacityTons: 100,
+    status: 'ACTIVE',
+    operator: 'S. Soren (Demo)',
+    fuelPercent: 51,
+    batteryPercent: 81,
+    assignedZone: 'Waste Dump Yard Bench 2',
+    ultrasonicFrontDistance: 42.1,
+    ultrasonicRearDistance: 39.5,
+  },
+  {
+    id: 'D05',
+    name: 'Dumper D05',
+    x: 48,
+    y: 75,
+    heading: 270,
+    speed: 0,
+    loadStatus: 'EMPTY',
+    payloadTons: 0,
+    maxCapacityTons: 100,
+    status: 'IDLE',
+    operator: 'K. Mahato (Demo)',
+    fuelPercent: 43,
+    batteryPercent: 76,
+    assignedZone: 'Heavy Equipment Workshop',
+    ultrasonicFrontDistance: 60.0,
+    ultrasonicRearDistance: 60.0,
+  },
+  {
+    id: 'D06',
+    name: 'Dumper D06',
+    x: 18,
+    y: 62,
+    heading: 310,
+    speed: 19,
+    loadStatus: 'FULL',
+    payloadTons: 91.8,
+    maxCapacityTons: 100,
+    status: 'ACTIVE',
+    operator: 'P. Murmu (Demo)',
+    fuelPercent: 89,
+    batteryPercent: 97,
+    assignedZone: 'Open Cast Pit Bench 4',
+    ultrasonicFrontDistance: 44.7,
+    ultrasonicRearDistance: 52.0,
+  },
+];
+
+export const INITIAL_WEATHER: WeatherData = {
+  temperatureC: 16.4,
+  humidityPercent: 88,
+  visibilityMeters: 45, // Heavy fog condition demonstrating FogGuard need
+  fogLevel: 'DENSE_FOG',
+  ambientLightLux: 120, // Low visibility / dawn
+  windSpeedKmh: 7.2,
+  barometricPressureHpa: 1012,
+  lastUpdated: '08:45:00 AM',
+};
+
+export const MINE_ZONES = [
+  { id: 'pit', name: 'Open Cast Pit (Bench 4)', x: 18, y: 65, color: '#F59E0B' },
+  { id: 'ramp', name: 'Main Haul Ramp', x: 30, y: 36, color: '#3B82F6' },
+  { id: 'crusher', name: 'Primary Crusher Hopper', x: 68, y: 20, color: '#10B981' },
+  { id: 'dump', name: 'Waste Dump Yard', x: 76, y: 70, color: '#8B5CF6' },
+  { id: 'workshop', name: 'Maintenance Workshop', x: 48, y: 80, color: '#64748B' },
+];
+
+export const STATIC_OBSTACLES = [
+  { id: 'obs-1', label: 'Berm / Rock Wall', distanceMeters: 28, angleDegrees: 330, type: 'OBSTACLE' as const, relativeSpeedKmh: 0 },
+  { id: 'obs-2', label: 'Excavator EX-04', distanceMeters: 42, angleDegrees: 85, type: 'VEHICLE' as const, relativeSpeedKmh: 0 },
+  { id: 'obs-3', label: 'Survey Crew (Personnel)', distanceMeters: 36, angleDegrees: 195, type: 'PERSONNEL' as const, relativeSpeedKmh: 1.5 },
+];
